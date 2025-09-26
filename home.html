@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Tic Tac Toe - Accueil</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="Tic Tac Toe">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tic Tac Toe">
+    <meta name="description" content="Un jeu de morpion futuriste avec effets néon et sons immersifs">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="theme-color" content="#00ffff">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180x180.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16x16.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="home-container">
+        <div class="hero-section">
+            <h1 class="main-title">🎮 Tic Tac Toe</h1>
+            <p class="subtitle">Jeu de Morpion Futuriste</p>
+            <div class="neon-border"></div>
+        </div>
+
+        <div class="features-section">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Effets Néon</h3>
+                <p>Interface futuriste avec des effets lumineux époustouflants</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔊</div>
+                <h3>Sons Immersifs</h3>
+                <p>Audio synthétique pour une expérience gaming complète</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile First</h3>
+                <p>Optimisé pour tous les appareils avec support tactile</p>
+            </div>
+        </div>
+
+        <div class="game-preview">
+            <div class="preview-board">
+                <div class="preview-cell x">X</div>
+                <div class="preview-cell"></div>
+                <div class="preview-cell o">O</div>
+                <div class="preview-cell"></div>
+                <div class="preview-cell x">X</div>
+                <div class="preview-cell"></div>
+                <div class="preview-cell"></div>
+                <div class="preview-cell o">O</div>
+                <div class="preview-cell"></div>
+            </div>
+        </div>
+
+        <div class="action-section">
+            <button class="play-btn" onclick="window.location.href='game.html'">
+                <span class="btn-text">🚀 Jouer Maintenant</span>
+                <div class="btn-glow"></div>
+            </button>
+            
+            <div class="game-info">
+                <p>🎯 Deux joueurs • ⏱️ Parties rapides • 🏆 Score en temps réel</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Tic Tac Toe Futuriste • Amusez-vous bien !</p>
+        </div>
+    </div>
+
+    <script>
+        // Animation d'entrée
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.feature-card, .preview-board, .play-btn');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Effet de survol pour le bouton de jeu
+        document.querySelector('.play-btn').addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+
+        document.querySelector('.play-btn').addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+
+        // Animation des cellules de prévisualisation
+        setInterval(() => {
+            const cells = document.querySelectorAll('.preview-cell:not(.x):not(.o)');
+            const randomCell = cells[Math.floor(Math.random() * cells.length)];
+            if (randomCell) {
+                randomCell.style.opacity = '0.3';
+                setTimeout(() => {
+                    randomCell.style.opacity = '1';
+                }, 500);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

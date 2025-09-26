@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Tic Tac Toe - Jeu de Morpion</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="Tic Tac Toe">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tic Tac Toe">
+    <meta name="description" content="Un jeu de morpion futuriste avec effets néon et sons immersifs">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="theme-color" content="#00ffff">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180x180.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16x16.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Tic Tac Toe</h1>
+        
+        <div class="game-info">
+            <div class="current-player">
+                Tour du joueur: <span id="current-player-symbol">X</span>
+            </div>
+            <div class="score">
+                <div class="score-item">
+                    <span class="player-symbol">X</span>
+                    <span id="score-x">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="player-symbol">O</span>
+                    <span id="score-o">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-board" id="game-board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <div class="game-controls">
+            <button id="home-btn" class="home-btn">🏠 Accueil</button>
+            <button id="restart-btn" class="restart-btn">🔄 Rejouer</button>
+            <button id="sound-btn" class="sound-btn">🔊 Son</button>
+            <button id="fullscreen-btn" class="fullscreen-btn">📱 Plein écran</button>
+        </div>
+
+        <div class="game-status" id="game-status"></div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW enregistré: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('Échec d\'enregistrement SW: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
