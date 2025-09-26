@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎮 Tic Tac Toe - Application Mobile
 
 Une application Progressive Web App (PWA) de jeu de morpion avec un design néon futuriste et des fonctionnalités mobiles avancées.
@@ -85,3 +86,6 @@ Ce projet est open source et libre d'utilisation.
 ---
 
 **Amusez-vous bien ! 🎉**
+=======
+# tictactoe2
+>>>>>>> ddfe88d84e3f005e50ecc0b65e421036c033a393
